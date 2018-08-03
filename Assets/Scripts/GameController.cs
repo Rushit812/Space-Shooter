@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class GameController : MonoBehaviour {
     public Vector3 spawnValues;
     public GameObject hazard;
