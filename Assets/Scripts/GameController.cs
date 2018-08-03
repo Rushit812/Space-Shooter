@@ -52,11 +52,11 @@ public class GameController : MonoBehaviour {
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 0.0f, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
-                Instantiate(hazard, spawnPosition, spawnRotation);
+                Instantiate(hazard, spawnPosition, spawnRotation); 
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
-
+            hazard.GetComponent<Mover>().speed--;
             if (gameOver)
             {
                 restartText.text = "Press 'R' for Restart";
