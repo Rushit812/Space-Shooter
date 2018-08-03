@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameController : MonoBehaviour {
     public Vector3 spawnValues;
     public GameObject hazard;
@@ -10,9 +11,9 @@ public class GameController : MonoBehaviour {
     public float startWait;
     public float waveWait;
 
-    public GUIText scoreText;
-    public GUIText restartText;
-    public GUIText gameOverText;
+    public Text scoreText;
+    public Text restartText;
+    public Text gameOverText;
 
     private bool gameOver;
     private bool restart;
@@ -35,8 +36,7 @@ public class GameController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Application.LoadLevel(Application.loadedLevel);
-                
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
             
