@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
     public Vector3 spawnValues;
-    public GameObject hazard;
+    public GameObject[] hazards;
+    private GameObject hazard;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -50,17 +51,19 @@ public class GameController : MonoBehaviour {
         {
             for (int i = 0; i < hazardCount; i++)
             {
+                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 0.0f, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation); 
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
-            hazard.GetComponent<Mover>().speed--;
+            //hazard.GetComponent<Mover>().speed--;
             if (gameOver)
             {
                 restartText.text = "Press 'R' for Restart";
                 restart = true;
+                //hazards[].GetComponent<Mover>().speed = -5;
                 break;
             }
         }
